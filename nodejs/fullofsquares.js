@@ -65,7 +65,7 @@ function getFilledSquare(size) {
     return rows;
 }
 
-
+(async function displayDiamonds() {
 let nextRows = [];
 while (true) {
     for (let j = 0; j < NUM_SQUARES_PER_ROW; j++) {
@@ -102,3 +102,4 @@ while (true) {
     // Pause for a bit before printing the next row:
     await new Promise(resolve => setTimeout(resolve, DELAY));
 }
+})();
