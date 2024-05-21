@@ -170,8 +170,13 @@ class Duckling {
 
 
 async function main() {
-    let ducklingLanes = Array.from({length: (Math.floor(width / DUCKLING_WIDTH))}, () => null);
-
+    //let ducklingLanes = Array.from({length: (Math.floor(width / DUCKLING_WIDTH))}, () => null);
+    // Create an array of laneTotalLength elements. All the elements are null.
+    const laneTotalLength = Math.floor(width / DUCKLING_WIDTH)
+    let ducklingLanes = [];
+    for (let i = 0; i < laneTotalLength; i++) {
+        ducklingLanes.push(null);
+    }
     while (running) {
         let line = '';
         for (let laneNum = 0; laneNum < ducklingLanes.length; laneNum++) {
@@ -199,6 +204,13 @@ async function main() {
 }
 
 main();
+/*
+"(´ᴥ`)"
+
+>" )   =^^)    (``=   ("=  >")    ("=
+(  >)  (  ^)  (v  )  (^ )  ( >)  (v )
+ ^ ^    ^ ^    ^ ^    ^^    ^^    ^^
+ */
 </script>
 
 </body>
