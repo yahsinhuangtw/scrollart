@@ -20,7 +20,7 @@ bextRowBuffer = 256;  // Change this to whatever size you want, or -1 for infini
 const DELAY = 60;
 let width = 220;
 const DENSITY = 0.10;
-const DUCKLING_WIDTH = 5;
+const DUCKLING_WIDTH = 11;
 let running = true;
 
 class Duckling {
@@ -43,115 +43,50 @@ class Duckling {
     };
 
     getHeadStr() {
-        let headStr = '';
+        let headStr = ' /#|';
         if (this.direction === 'LEFT') {
-            // Get the bill:
-            if (this.bill === 'OPEN') {
-                headStr += '>';
-            } else if (this.bill === 'CLOSED') {
-                headStr += '=';
-            }
-
             // Get the eyes:
             if (this.eyes === 'BEADY' && this.body === 'CHUBBY') {
-                headStr += '"';
+                headStr += '• •';
             } else if (this.eyes === 'BEADY' && this.body === 'VERY_CHUBBY') {
-                headStr += '" ';
+                headStr += '@ @';
             } else if (this.eyes === 'WIDE') {
-                headStr += "''";
+                headStr += "❤︎ ❤︎";
             } else if (this.eyes === 'HAPPY') {
-                headStr += '^^';
+                headStr += '◕ ◕';
             } else if (this.eyes == 'ALOOF') {
-                headStr += '@@';
+                headStr += '⊙ ⊙';
             }
 
-            headStr += ') '; //  Back of the left-facing head.
+            headStr += '|#\\ '; //  Back of the left-facing head.
         } else if (this.direction === 'RIGHT') {
-            headStr += ' (';  // Back of the right-facing head.
+            headStr += '';  // Back of the right-facing head.
 
             // Get the eyes:
             if (this.eyes === 'BEADY' && this.body === 'CHUBBY') {
-                headStr += '"';
+                headStr += '• •';
             } else if (this.eyes === 'BEADY' && this.body === 'VERY_CHUBBY') {
-                headStr += ' "';
+                headStr += '@ @';
             } else if (this.eyes === 'WIDE') {
-                headStr += "''";
+                headStr += "❤︎ ❤︎";
             } else if (this.eyes === 'HAPPY') {
-                headStr += '^^';
+                headStr += '◕ ◕';
             } else if (this.eyes == 'ALOOF') {
-                headStr += '``';
+                headStr += '⊙ ⊙';
             }
-
-            // Get the bill:
-            if (this.bill === 'OPEN') {
-                headStr += '<';
-            } else if (this.bill === 'CLOSED') {
-                headStr += '=';
-            }
-        }
-
-        if (this.body === 'CHUBBY') {
-            // Get an extra space so chubby ducklings are the same width as very chubby ducklings.
-            headStr += ' ';
+            headStr += '|#\\ ';
         }
 
         return headStr;
     }
 
     getBodyStr() {
-        let bodyStr = '(';
-        if (this.direction === 'LEFT') {
-            // Get the interior body space:
-            if (this.body === 'CHUBBY') {
-                bodyStr += ' ';
-            } else if (this.body === 'VERY_CHUBBY') {
-                bodyStr += '  ';
-            }
-
-            // Get the wing:
-            if (this.wing === 'OUT') {
-                bodyStr += '>';
-            } else if (this.wing === 'UP') {
-                bodyStr += '^';
-            } else if (this.wing === 'DOWN') {
-                bodyStr += 'v';
-            }
-        } else if (this.direction === 'RIGHT') {
-            // Get the wing:
-            if (this.wing === 'OUT') {
-                bodyStr += '<';
-            } else if (this.wing === 'UP') {
-                bodyStr += '^';
-            } else if (this.wing === 'DOWN') {
-                bodyStr += 'v';
-            }
-            
-            // Get the interior body space:
-            if (this.body === 'CHUBBY') {
-                bodyStr += ' ';
-            } else if (this.body === 'VERY_CHUBBY') {
-                bodyStr += '  ';
-            }
-        }
-
-        bodyStr += ')';
-
-        if (this.body === 'CHUBBY') {
-            // Get an extra space so chubby ducklings are the same width as very chubby ducklings.
-            bodyStr += ' ';
-        }
-
+        let bodyStr = '|##\\(ᴥ)/##/';
         return bodyStr;
     }
 
     getFeetStr() {
-        if (this.body === 'CHUBBY') {
-            return ' ^^  ';
-        } else if (this.body === 'VERY_CHUBBY') {
-            return ' ^ ^ ';
-        } else {
-            return '';
-        }
+        return '  (")_(")_ ';
     }
 
     getNextBodyPart() {
@@ -205,7 +140,33 @@ async function main() {
 
 main();
 /*
-"(´ᴥ`)"
+     /#|• •|#\ 
+    |##\(ᴥ)/##/
+      (")_(")_ 
+
+    /#|@ @|#\
+   |##\(ᴥ)/##/
+     (")_(")_  
+
+    /#|❤︎ ❤︎|#\
+   |##\(ᴥ)/##/
+     (")_(")_ 
+     
+    /#|◕ ◕|#\
+   |##\(ᴥ)/##/
+     (")_(")_  
+
+    /#|⊙ ⊙|#\
+   |##\(ᴥ)/##/
+     (")_(")_  
+
+    /#|•́ •̀|#\
+   |##\(ᴥ)/##/
+     (")_(")_ 
+
+    /#|╥ ╥|#\
+   |##\(ᴥ)/##/
+     (")_(")_
 
 >" )   =^^)    (``=   ("=  >")    ("=
 (  >)  (  ^)  (v  )  (^ )  ( >)  (v )
