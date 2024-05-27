@@ -24,8 +24,6 @@ const DUCKLING_WIDTH = 11;
 let running = true;
 
 class Duckling {
-
-
     constructor() {
         this.direction = ['LEFT', 'RIGHT'][Math.floor(Math.random() * 2)];
         this.bill = ['CLOSED', 'OPEN'][Math.floor(Math.random() * 2)];
@@ -42,41 +40,26 @@ class Duckling {
         this.nextBodypart = 'HEAD';
     };
 
+    getFullStr() {
+        const fullStr = `${this.getHeadStr()} \n ${this.getBodyStr()} \n ${this.getFeetStr()}`;
+        console.log(fullStr);
+    }
+
     getHeadStr() {
         let headStr = ' /#|';
-        if (this.direction === 'LEFT') {
-            // Get the eyes:
-            if (this.eyes === 'BEADY' && this.body === 'CHUBBY') {
-                headStr += '• •';
-            } else if (this.eyes === 'BEADY' && this.body === 'VERY_CHUBBY') {
-                headStr += '@ @';
-            } else if (this.eyes === 'WIDE') {
-                headStr += "❤︎ ❤︎";
-            } else if (this.eyes === 'HAPPY') {
-                headStr += '◕ ◕';
-            } else if (this.eyes == 'ALOOF') {
-                headStr += '⊙ ⊙';
-            }
-
-            headStr += '|#\\ '; //  Back of the left-facing head.
-        } else if (this.direction === 'RIGHT') {
-            headStr += '';  // Back of the right-facing head.
-
-            // Get the eyes:
-            if (this.eyes === 'BEADY' && this.body === 'CHUBBY') {
-                headStr += '• •';
-            } else if (this.eyes === 'BEADY' && this.body === 'VERY_CHUBBY') {
-                headStr += '@ @';
-            } else if (this.eyes === 'WIDE') {
-                headStr += "❤︎ ❤︎";
-            } else if (this.eyes === 'HAPPY') {
-                headStr += '◕ ◕';
-            } else if (this.eyes == 'ALOOF') {
-                headStr += '⊙ ⊙';
-            }
-            headStr += '|#\\ ';
+        // Get the eyes:
+        if (this.eyes === 'BEADY' && this.body === 'CHUBBY') {
+            headStr += '• •';
+        } else if (this.eyes === 'BEADY' && this.body === 'VERY_CHUBBY') {
+            headStr += '@ @';
+        } else if (this.eyes === 'WIDE') {
+            headStr += "❤︎ ❤︎";
+        } else if (this.eyes === 'HAPPY') {
+            headStr += '◕ ◕';
+        } else if (this.eyes == 'ALOOF') {
+            headStr += '⊙ ⊙';
         }
-
+        headStr += '|#\\ ';
         return headStr;
     }
 
@@ -102,7 +85,6 @@ class Duckling {
         }
     }
 }
-
 
 async function main() {
     //let ducklingLanes = Array.from({length: (Math.floor(width / DUCKLING_WIDTH))}, () => null);
